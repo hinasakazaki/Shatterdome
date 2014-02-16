@@ -1,7 +1,11 @@
 package com.example.shatterdome;
 
+import java.util.EventListener;
+
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import android.location.Location;
 import android.location.LocationManager;
@@ -24,15 +28,15 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
-       
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
- 
         setContentView(R.layout.activity_main);
- 
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
-
-      
+       
+//        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+// 
+//        setContentView(R.layout.activity_main);
+// 
+//        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
+//
+//      
         //First, get location for GPS from Mobile Device
         String provider = "";
 
@@ -52,10 +56,48 @@ public class MainActivity extends Activity {
         ref_lon = new Firebase(FIREBASE_URL + "/GPS_lon");
         
 
+        //Get data
+        
+        ref_lat.addChildEventListener(new ChildEventListener() {
+
+			@Override
+			public void onCancelled(FirebaseError arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onChildAdded(DataSnapshot arg0, String arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onChildChanged(DataSnapshot arg0, String arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onChildMoved(DataSnapshot arg0, String arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onChildRemoved(DataSnapshot arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+        
         // Write data to Firebase
         
         ref_lon.setValue(lon);
         ref_lat.setValue(lat);
+        
+        
+       
         
         
   

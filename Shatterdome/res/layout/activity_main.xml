@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/DangerLevel"
         android:layout_marginTop="50dp"
-        android:text="Safe Location"
+        android:text="Safe Location: People's Park"
         android:typeface="sans" />
 
     <TextView
@@ -30,10 +30,21 @@
 
     <ImageView
         android:id="@+id/DangerIcon"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/SafeLocation"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/DangerLevel"
+        android:src="@+drawable/med" />
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/DangerLevel"
-        android:layout_marginLeft="22dp"
-        android:layout_toRightOf="@+id/DangerLevel"/>
+        android:layout_alignLeft="@+id/SafeLocation"
+        android:layout_below="@+id/SafeLocation"
+        android:layout_marginTop="47dp"
+        android:typeface="sans"
+        android:text="Directions" />
 
 </RelativeLayout>
