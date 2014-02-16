@@ -1,0 +1,58 @@
+package com.example.shatterdome;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.Window;
+
+public class MainActivity extends Activity {
+
+	 private static final String FIREBASE_URL = "https://shatterdome.firebaseio.com/";
+
+	 private float long;
+	 private float lat;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+ 
+       
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+ 
+        setContentView(R.layout.activity_main);
+ 
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
+
+        // Create a reference to a Firebase location
+        ref = new Firebase(FIREBASE_URL).child("lat");
+
+
+        // Write data to Firebase
+        
+        ref.setValue("Do you have data? You'll love Firebase.");
+
+        // Read data and react to changes
+        ref.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snap) {
+                System.out.println(snap.getName() + " -> " + snap.getValue());
+            }
+
+            @Override public void onCancelled() { }
+        });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+
+    }
+    
+}

@@ -9,13 +9,31 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/dangerLevel"
+        android:id="@+id/SafeLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/DangerLevel"
+        android:layout_marginTop="50dp"
+        android:text="Safe Location"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/DangerLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SafeLocation"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="30dp"
-        android:text="@String/DangerLevel" />
+        android:layout_marginTop="31dp"
+        android:text="Current Danger Level"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/DangerIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/DangerLevel"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/DangerLevel"/>
 
 </RelativeLayout>
